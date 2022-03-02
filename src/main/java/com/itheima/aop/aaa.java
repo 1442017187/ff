@@ -12,5 +12,8 @@ public class aaa {
         System.out.println("jsdkf");
         System.out.println("jss21sdkf");
         System.out.println("jsd22kf");
+        System.out.println("aaa");
+        System.out.println("jss21sdkf");
+        System.out.println("jsd22kf");
     }
 }
