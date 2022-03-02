@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1. 把两个类交给spring托管： 目标类和增强类-->
+    <bean id="us" class="com.itheima.service.impl.UserServiceImpl"/>
+    <bean id="myAdvice" class="com.itheima.aop.MyAdvice"/>
+
+
+    <!--2. 配置aop-->
+    <aop:config>
+
+        <!--抽取切入点的表达式-->
+        <aop:pointcut id="us-pointcut" expression="execution(public void com.itheima.service.impl.UserServiceImpl.add())"/>
+
+        <aop:aspect ref="myAdvice">
+            <!--//通知的类型： 前置通知，在目标方法之前先执行增强的方法-->
+            <aop:before method="print" pointcut-ref="us-pointcut"/>
+
+            <!--//通知的类型： 后置通知，在目标方法之后执行增强的方法-->
+            <aop:after-returning method="print" pointcut-ref="us-pointcut"/>
+
+        </aop:aspect>
+    </aop:config>
+</beans>
