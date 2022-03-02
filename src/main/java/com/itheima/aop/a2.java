@@ -8,4 +8,7 @@ package com.itheima.aop;
  * @Copyright © 2016-2017 奥琦玮信息科技（北京）有限公司
  */
 public class a2 {
+    public static void main(String[] args) {
+        System.out.println("11");
+    }
 }
